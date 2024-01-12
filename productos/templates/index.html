@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Productos</h>
+<a href={% url "productos:formulario" %}>Nuevo producto</a>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Stock</th>
+            <th>Puntaje</th>
+            <th>Categoría</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {%for producto in productos%}
+        <tr>  
+            <td>
+                <a href='{% url 'productos:detalle' producto.id %}'>
+                    {{ producto.nombre }}
+                </a>
+            </td>
+            <td>{{ producto.stock }}</td>
+            <td>{{ producto.puntaje }}</td>
+            <td>{{ producto.categoria }}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+
+</table>
+
+{% endblock %}
